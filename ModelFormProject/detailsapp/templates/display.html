@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/w3.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Details</title>
+</head>
+<body>
+<h2>All User Details</h2>
+<table>
+    {% for item in users %}
+    <tr>
+        <td><b>Booking Name:</b>{{ item.BookingName }}</td>
+        <td><b>Pub Name:</b> {{ item.PubName}}</td>
+        <td><b>Time:</b> {{ item.Time }}</td>
+        <td><b>Contact Email:</b>{{item.email|default:"hidden" }}</td>
+    </tr>
+    <tr>
+    <td colspan="2" class="divider"><hr/></td>
+</tr>
+    {% endfor %}
+</table>
+</body>
+</html>

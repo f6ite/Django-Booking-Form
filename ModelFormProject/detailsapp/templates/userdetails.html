@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/w3.css' %}">
+    <meta charset="UTF-8">
+    <title>Pub booking form</title>
+</head>
+<body>
+<h2>Pub booking form</h2>
+
+<form action="/display/" method="post"> {% csrf_token %}
+    {{form.as_p}}
+    {{form.non_field_errors}}
+<input type="submit" value="Submit" />
+</form>
+</body>
+</html>

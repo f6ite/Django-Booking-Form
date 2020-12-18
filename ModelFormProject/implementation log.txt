@@ -1,0 +1,46 @@
+10/12:
+- Installed Python and setup Django
+- Implemented a simple poll system to allow users to select options from a list and have it stored on a built in database which can be viewed from the admin panel
+
+11/12:
+- Tested the usage of forms instead of a list system.
+	- Implemented a rudimentary forms system that one completed redirects to a page that asks for contact information
+		- However this didn't store information or have the ability to due to the limited ability of the standard forms module in Django
+
+	- Changed the use away from the forms module and swapped to the ModelForms module, this allowed for the storage of data
+		- I restructured the webpage using ModelForms in the place of standard forms and printed the input information to a webpage that is accessable by everyone
+			- The next step is then to include validation to ensure that people cannot book the same table at the same time
+		- Changing the names of the fields inside the code itself breaks the entire website despite all references being replaced by the replace tool in VS Code
+			- Due to this the original test names for the data has been used, but the user only sees the updated names
+
+13/12:
+- Switched back to a polls system and attempted to daisy chain them together to simply create a linked set of answers to be complied, meaning less user error when inputting data
+	- Daisy chaining the polls together would have been more complex and less flexible than making a form and letting the pub owners view and approve the applications
+
+- Remade  the forms system used previously
+	- Fixed issue with adding and renaming field names ('python manage.py makemigrations > python manage.py migrate' in cmd)
+	- Added validation for time (only accept number input in the form of HH:MM)
+	- Added number field that allows for input values or alternatively increases by 1 at the push of small buttons at the side of the field or by using the arrow keys
+
+16/12:
+- Added drop down field for PubName that shows a user a list of options and allows the selection from there
+	- This doesn't allow for seperate options later down the line however, something to implement would be for this to change the form in some way or allow for an alternative redirect
+
+- Made form data viewable and editable from the admin panel (allows for removal of tests without cleansing the database through cmd (python manage.py flush))
+	- Added 'Pub Owners' user group to the admin panel, allows pub owners once added to view, remove, and add bookings (if they took a booking on the phone for example)
+
+- Attempted to add a poll like system to allow for selection of tables, however this didn't work as there was no way to remove the options for a specific time once someone selected it
+
+17/12
+- Implemented validation to the form
+	- Worked with duplicate name bookings, but subsequent validations didn't work
+		- The BookingName validation works correctly and doesn't allow you to create a booking of the same name
+		- The other validation is being bypassed for some reason that I can't work out depsite the fact it should work the same as the previous validation
+			- For some reason using 'and' to define the parameters of the validtion didn't work, so I had to nest 3 if statements in order to prevent booking of the same table at the same time
+- Encountered issue where Django wasn't recognising whole numbers input in to the TableNo field despite being an integerfield
+	- It was an issue with 3 values being returned and for some reason being put into the TableNo field, this was resolved by not returning the other numbers at the end of the validation, and for some reason this worked
+
+18/12
+- Adjusted the time field to use a choice section so that the time slots were more readily available to the pub owners and people booking alike
+- Added entire program into a pip container and made it ready to download and access
+
